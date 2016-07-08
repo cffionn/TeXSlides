@@ -33,15 +33,19 @@ int createSlidesFromDirContents(const std::string inFileName)
 
   for(int iter = 0; iter < nStr; iter++){
     std::string tempStr = inStr_p->at(iter);
+    std::string tempStr2 = inStr_p->at(iter);
+    tempStr2 = tempStr2.substr(0, tempStr2.find("_2016")) + "_VPt" + tempStr2.substr(tempStr2.find("_2016"), tempStr2.size() - tempStr2.find("_2016"));
 
-    std::string trigStr = tempStr.substr(0, tempStr.find("_asymm"));
-    std::string dateStr = tempStr.substr(tempStr.find("_asymm")+6, tempStr.size() - tempStr.find("_asymm")-6);
+    std::string trigStr = tempStr.substr(0, tempStr.find("_2016"));
+    std::string dateStr = tempStr.substr(tempStr.find("_2016")+1, tempStr.size() - tempStr.find("_2016")-1);
     dateStr = dateStr.substr(0, dateStr.find(".pdf"));
+    dateStr = dateStr.substr(0, 4) + "." + dateStr.substr(4, 2) + "." + dateStr.substr(6, 2);
 
     std::cout << "\\begin{frame}" << std::endl;
     std::cout << "\\frametitle{\\centerline{" << trigStr << " (" << dateStr << ")}}" << std::endl;
     std::cout << "\\begin{center}" << std::endl;
-    std::cout << "\\includegraphics[width=.5\\textwidth]{/Users/cfmcginn/MITHIG/tempPlots2016/June15Plots/TurnOns/" << tempStr << "}" << std::endl;
+    std::cout << "\\includegraphics[width=.5\\textwidth]{/Users/cfmcginn/MITHIG/tempPlots2016/July6plots/phoPlots/" << tempStr << "}" << std::endl;
+    std::cout << "\\includegraphics[width=.5\\textwidth]{/Users/cfmcginn/MITHIG/tempPlots2016/July6plots/phoPlots/" << tempStr2 << "}" << std::endl;
     std::cout << "\\end{center}" << std::endl;
 
     std::cout << "\\begin{itemize}" << std::endl;
